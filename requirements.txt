@@ -1,0 +1,8 @@
+numpy
+pandas
+sklearn
+matplotlib
+wget
+seaborn
+category-encoders
+feature-engine
