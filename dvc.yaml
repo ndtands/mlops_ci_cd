@@ -1,0 +1,28 @@
+stages:
+  get_data:
+    cmd: python get_dataset.py
+    deps:
+    - get_dataset.py
+    outs:
+    - test.csv
+    - train.csv
+  process:
+    cmd: python process_data.py
+    deps:
+    - process_data.py
+    - test.csv
+    - train.csv
+    outs:
+    - test_processed_transformed.csv
+    - train_processed_transformed.csv
+  train:
+    cmd: python train.py
+    deps:
+    - train.py
+    - test_processed_transformed.csv
+    - train_processed_transformed.csv
+    outs:
+    - ROC.png
+    metrics:
+    - metrics.json:
+        cache: false
